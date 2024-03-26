@@ -1,0 +1,30 @@
+ 
+
+#Home-page .image {
+    width: 100%;
+    height : auto;
+}
+
+#Home-page .img-block .img_wrapper {
+    width: 90%;
+    margin: 0 auto;
+}
+
+#sideDrawer .maindrawer {
+    /* existing styles */
+    opacity: 0;
+    transform: translateX(-100%);
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+#sideDrawer .drawer-overlay{
+    width:0;
+}
+#sideDrawer .open-overlay {
+    width: 100%;
+}
+#sideDrawer .drawer-open {
+    opacity: 1;
+    transform: translateX(0);
+}
+ 
