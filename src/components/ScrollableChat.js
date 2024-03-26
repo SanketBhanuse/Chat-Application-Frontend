@@ -12,7 +12,7 @@ const ScrollableChat = ({ messages }) => {
                     {(isSameSender(messages, m, i, user._id)
                         || isLastMessage(messages, i, user._id)
                     ) && (
-                            <img src={m.sender.pic} alt="" className='w-6 h-6 m-2 mt-3' />
+                            <img src={m.sender.pic} alt="" className='w-6 h-6 m-2 mt-3 rounded-full' />
                         )}
 
                     <span

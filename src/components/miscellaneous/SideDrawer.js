@@ -173,14 +173,14 @@ const SideDrawer = () => {
                     </div>
                     <div className={` profile relative flex justify-center items-center ${darkTheme ? "bg-[#474B57]" : "bg-[#ff831d99]"} px-2 py-1 rounded-md gap-2`}>
 
-                        <img className="hidden md:block w-8 h-auto p-[2px] rounded-full ring-2 ring-[#fff]" src={user.pic} alt="Bordered avatar"></img>
+                        <img className="hidden md:block   p-[2px] rounded-full ring-2 w-6 h-6 ring-[#fff]" src={user.pic} alt="Bordered avatar"></img>
                         <div className="options_selector ">
                             {showOptions ?
                                 <FaChevronUp onClick={opendrawer} className='cursor-pointer' />
                                 : <FaChevronDown onClick={opendrawer} className='cursor-pointer' />
                             }
 
-                            <div className={`options ${showOptions ? "block" : "hidden"} absolute right-0 top-10 bg-white`}>
+                            <div className={`options ${showOptions ? "block" : "hidden"} z-10 absolute right-0 top-10 bg-white`}>
                                 <div className='w-full hover:bg-orange-400 px-6 py-1 cursor-pointer shadow-lg' onClick={openModal}>Profile</div>
                                 <div className='w-full hover:bg-orange-400 px-6 py-1 cursor-pointer shadow-lg' onClick={logout}>Logout</div>
                             </div>
