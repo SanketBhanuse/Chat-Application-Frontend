@@ -192,7 +192,7 @@ const SideDrawer = () => {
             {isModalopen && <Popup onclose={closeModal} isChatPage={true} user={user} />}
 
             <div id='sideDrawer'>
-                <div className={`drawer-overlay absolute   h-full top-0 bg-[#000] bg-opacity-80 cursor-pointer ${isDraweropen ? 'open-overlay left-0' : 'left-[-100px]'}`} onClick={handleOverlay}>
+                <div className={`drawer-overlay absolute z-50  h-full top-0 bg-[#000] bg-opacity-80 cursor-pointer ${isDraweropen ? 'open-overlay left-0' : 'left-[-100px]'}`} onClick={handleOverlay}>
                     <div className={`overflow-y-auto  ${darkTheme ? "bg-[#474B57] text-white" : "bg-[#faf1ed] text-black"}   w-[80%] md:w-[30%] h-full  absolute left-0 top-0 ${isDraweropen ? 'drawer-open' : ''}`}>
 
                         <div className="sidedrawerContent z-10 p-2">
