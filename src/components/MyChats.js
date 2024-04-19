@@ -58,7 +58,6 @@ const MyChats = ({ fetchAgain }) => {
             {chats ? (
                 <div className="chatusers overflow-y-scroll">
                     {loading ? <ChatLoading /> : (
-
                         chats.map((chat) => (
 
                             // <div className={`chatusers ${darkTheme ? selectedChat === chat ? "!bg-orange-500 text-white" : "bg-[#474B57] text-white" : "bg-[#ffe1d4] text-black"} mb-1 py-3 px-2 hover:bg-[ffe1d4] rounded-md capitalize  cursor-pointer ${selectedChat === chat ? "!bg-orange-500 text-white" : " bg-[#ffdcba] text-black "}`}
