@@ -12,6 +12,7 @@ import { APP_LINK } from '../config/constant';
 const MyChats = ({ fetchAgain }) => {
     const [loggedUser, setLoggedUser] = useState();
     const [isModalopen, setIsmodalOpen] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     const { selectedChat, setSelectedChat, user, chats, setChats, darkTheme } = ChatState();
 
@@ -26,6 +27,7 @@ const MyChats = ({ fetchAgain }) => {
     const fetchChats = async () => {
         console.log(user._id);
         try {
+            setLoading(true);
             const config = {
 
                 headers: {
@@ -35,6 +37,8 @@ const MyChats = ({ fetchAgain }) => {
 
             const { data } = await axios.get(`${APP_LINK}/api/chat`, config);
             setChats(data);
+            setLoading(false);
+
         } catch (error) {
             toast.error('failed to load chat');
         }
@@ -53,19 +57,23 @@ const MyChats = ({ fetchAgain }) => {
 
             {chats ? (
                 <div className="chatusers overflow-y-scroll">
-                    {chats.map((chat) => (
+                    {loading ? <ChatLoading /> : (
 
-                        // <div className={`chatusers ${darkTheme ? selectedChat === chat ? "!bg-orange-500 text-white" : "bg-[#474B57] text-white" : "bg-[#ffe1d4] text-black"} mb-1 py-3 px-2 hover:bg-[ffe1d4] rounded-md capitalize  cursor-pointer ${selectedChat === chat ? "!bg-orange-500 text-white" : " bg-[#ffdcba] text-black "}`}
-                        <div className={`chatusers ${darkTheme ? selectedChat === chat ? "!bg-orange-500 text-white" : "bg-[#474B57] text-white" : selectedChat === chat ? "!bg-orange-500 text-white" : "bg-[#ffe1d4] text-black"} mb-1 py-3 px-2 hover:bg-[ffe1d4] rounded-md capitalize  cursor-pointer`}
-                            onClick={() => setSelectedChat(chat)}
-                            key={chat._id}
-                        >
-                            {!chat.isGroupChat ? (
-                                getSender(loggedUser, chat.users)
-                            ) : (chat.chatName)}
+                        chats.map((chat) => (
 
-                        </div>
-                    ))}
+                            // <div className={`chatusers ${darkTheme ? selectedChat === chat ? "!bg-orange-500 text-white" : "bg-[#474B57] text-white" : "bg-[#ffe1d4] text-black"} mb-1 py-3 px-2 hover:bg-[ffe1d4] rounded-md capitalize  cursor-pointer ${selectedChat === chat ? "!bg-orange-500 text-white" : " bg-[#ffdcba] text-black "}`}
+                            <div className={`chatusers ${darkTheme ? selectedChat === chat ? "!bg-orange-500 text-white" : "bg-[#474B57] text-white" : selectedChat === chat ? "!bg-orange-500 text-white" : "bg-[#ffe1d4] text-black"} mb-1 py-3 px-2 hover:bg-[ffe1d4] rounded-md capitalize  cursor-pointer`}
+                                onClick={() => setSelectedChat(chat)}
+                                key={chat._id}
+                            >
+                                {!chat.isGroupChat ? (
+                                    getSender(loggedUser, chat.users)
+                                ) : (chat.chatName)}
+
+                            </div>
+                        ))
+
+                    )}
                 </div>
             ) : (
                 <ChatLoading />)
