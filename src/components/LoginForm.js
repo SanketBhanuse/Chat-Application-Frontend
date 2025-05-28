@@ -7,6 +7,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { ChatState } from '../Context/ChatProvider';
 import { APP_LINK } from '../config/constant';
+import Loader from './Loader';
 
 
 const LoginForm = () => {
@@ -63,12 +64,12 @@ const LoginForm = () => {
     return (
         <div id='loginForm' >
             <h1 className='text-[28px] text-[#f96e28] font-bold mb-3'>Login</h1>
-            <form action="" className=''>
+            <form action="" className='relative'>
                 <label className={`mb-1 block ${darkTheme ? "text-white" : "text-black"}`} >Email Id</label>
                 <input value={email} type="email" className='block mb-3 focus:outline-none w-[100%]  rounded-md p-1 border-b-2 border-red-600  bg-transparent' onChange={(e) => setEmail(e.target.value)} />
                 <label>Password</label>
                 <div className="password_input_wrapper relative">
-                    <input value={password} type={show ? "text" : "password"} className='block mb-1 focus:outline-none w-[100%]  rounded-md p-1 border-b-2 border-red-600  bg-transparent' onChange={(e) => setPassword(e.target.value)} />
+                    <input value={password} type={show ? "text" : "password"} className='z-1 block mb-1 focus:outline-none w-[100%]  rounded-md p-1 border-b-2 border-red-600  bg-transparent' onChange={(e) => setPassword(e.target.value)} />
                     <div className='cursor-pointer absolute right-2 top-[50%] transform translate-y-[-50%]' onClick={handleShowClick} >
                         <div className="img_wrapper w-[20px] h-auto">
                             <img src={show ? Showpass : Hidepass} alt="" />
@@ -78,8 +79,8 @@ const LoginForm = () => {
                 <div className="btn_wrapper text-right ">
 
                     <div className="block">
-                        <button className=" bg-[#f96e28] hover:bg-[#f96028] inline-block text-white font-bold mt-3  py-2 px-10 text-right  rounded cursor-pointer" onClick={submitHandler} >
-                            Login
+                        <button className=" bg-[#f96e28] hover:bg-[#f96028] inline-block text-white font-bold mt-3  py-2 px-10 text-right  rounded cursor-pointer" onClick={submitHandler} disabled={isLoading}>
+                            {loading ? "loading..." : "Login"}
                         </button>
                     </div>
                     <button
@@ -93,6 +94,7 @@ const LoginForm = () => {
                     </button>
                 </div>
             </form>
+            {loading ? <Loader /> : ""}
         </div>
     )
 }
