@@ -79,7 +79,7 @@ const LoginForm = () => {
                 <div className="btn_wrapper text-right ">
 
                     <div className="block">
-                        <button className=" bg-[#f96e28] hover:bg-[#f96028] inline-block text-white font-bold mt-3  py-2 px-10 text-right  rounded cursor-pointer" onClick={submitHandler} disabled={isLoading}>
+                        <button className=" bg-[#f96e28] hover:bg-[#f96028] inline-block text-white font-bold mt-3  py-2 px-10 text-right  rounded cursor-pointer" onClick={submitHandler} disabled={loading}>
                             {loading ? "loading..." : "Login"}
                         </button>
                     </div>
